@@ -1,0 +1,5 @@
+name: paho-mqtt-c
+
+build:
+  cmake-ext: True
+  kconfig-ext: True
