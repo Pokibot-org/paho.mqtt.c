@@ -412,22 +412,3 @@ install(
     ${CMAKE_INSTALL_LIBDIR}/cmake/eclipse-paho-mqtt-c
 )
 
-# Base64 test
-add_executable(Base64Test EXCLUDE_FROM_ALL Base64.c Base64.h)
-target_compile_definitions(Base64Test PUBLIC BASE64_TEST)
-
-if(PAHO_WITH_SSL OR PAHO_WITH_LIBRESSL)
-  add_executable(Base64TestOpenSSL EXCLUDE_FROM_ALL Base64.c Base64.h )
-  target_link_libraries(Base64TestOpenSSL ${SSL_LIBRARY_NAME}::SSL ${SSL_LIBRARY_NAME}::Crypto)
-  target_compile_definitions(Base64TestOpenSSL PUBLIC BASE64_TEST OPENSSL=1)
-endif()
-
-# SHA1 test
-add_executable(Sha1Test EXCLUDE_FROM_ALL SHA1.c SHA1.h)
-target_compile_definitions(Sha1Test PUBLIC SHA1_TEST)
-
-if(PAHO_WITH_SSL OR PAHO_WITH_LIBRESSL)
-	add_executable(Sha1TestOpenSSL EXCLUDE_FROM_ALL SHA1.c SHA1.h)
-	target_link_libraries(Sha1TestOpenSSL ${SSL_LIBRARY_NAME}::SSL ${SSL_LIBRARY_NAME}::Crypto)
-	target_compile_definitions(Sha1TestOpenSSL PUBLIC SHA1_TEST OPENSSL=1)
-endif()
